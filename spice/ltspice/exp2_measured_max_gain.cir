@@ -1,0 +1,29 @@
+* EEEN20020 Exp. 2 - Section G - MEASURED component values - MAXIMUM gain
+* !! The .param values below are PROTOTYPE placeholders, NOT measurements. !!
+* !! Replace them with your own DMM readings before using any result.      !!
+* R1max_m = pot resistance measured (wiper to the end you wired) at its maximum setting
+* Open in LTspice (File > Open, 'Netlists (*.cir)') and click Run.
+VCC vcc 0 5
+VEE 0 vee 5
+Vsig in 0 SINE(0 {Vpk} 1k)
+R3 in 0 {R3_m}
+R1 out inv {R1max_m}
+R2 inv 0 {R2_m}
+XU1 in inv vcc vee out uA741
+.tran 0 6m 0 1u
+.lib uA741.lib
+.param Vpk=0.5
+.options plotwinsize=0
+.param R1min_m=35 R1max_m=47.62k R2_m=9.93k R3_m=9.97k
+.meas TRAN Vin_pp PP V(in) FROM 2m TO 6m
+.meas TRAN Vout_pp PP V(out) FROM 2m TO 6m
+.meas TRAN AV PARAM Vout_pp/Vin_pp
+.meas TRAN Vin_pk FIND V(in) AT 4.25m
+.meas TRAN Vinv_pk FIND V(inv) AT 4.25m
+.meas TRAN Vout_pk FIND V(out) AT 4.25m
+.meas TRAN IR1_pk FIND I(R1) AT 4.25m
+.meas TRAN IR2_pk FIND I(R2) AT 4.25m
+.meas TRAN IR3_pk FIND I(R3) AT 4.25m
+.meas TRAN IVCC_pk FIND I(VCC) AT 4.25m
+.meas TRAN IVEE_pk FIND I(VEE) AT 4.25m
+.end

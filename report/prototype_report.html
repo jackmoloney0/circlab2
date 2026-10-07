@@ -1,0 +1,968 @@
+<!doctype html><html><head><meta charset='utf-8'><title>EEEN20020 Exp 2 — PROTOTYPE report</title><style>
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { font-family: "Liberation Sans", Arial, "DejaVu Sans", sans-serif; font-size: 9.6pt;
+       line-height: 1.38; color: #111827; background: #ffffff; }
+h1 { font-size: 19pt; margin: 0 0 4pt 0; color: #7f1d1d; }
+h2 { font-size: 13.2pt; margin: 14pt 0 6pt 0; padding: 4pt 6pt; background: #f3f4f6;
+     border-left: 5px solid #111827; break-after: avoid; }
+h3 { font-size: 11pt; margin: 10pt 0 4pt 0; break-after: avoid; }
+p { margin: 4pt 0 5pt 0; }
+table { border-collapse: collapse; width: 100%; margin: 5pt 0 7pt 0; break-inside: avoid; font-size: 9pt; }
+th, td { border: 1px solid #374151; padding: 3pt 5pt; vertical-align: top; }
+th { background: #e5e7eb; }
+img { display: block; max-width: 100%; max-height: 118mm; margin: 4pt auto 2pt auto; break-inside: avoid; }
+em { color: #1f2937; }
+code { font-family: "DejaVu Sans Mono", monospace; font-size: 8.4pt; background: #f3f4f6; padding: 0 2px; }
+.tbox { border: 1.6px solid #111827; padding: 5pt 7pt; margin: 7pt 0; }
+.tbhead { font-weight: bold; font-size: 9pt; background: #111827; color: #ffffff;
+          margin: -5pt -7pt 6pt -7pt; padding: 3pt 7pt; }
+.guide { border: 1.4px dashed #2563eb; background: #eff6ff; padding: 4pt 8pt; margin: 7pt 0;
+         font-size: 8.6pt; break-inside: avoid; }
+.notice { border: 2.2px solid #b91c1c; background: #fef2f2; padding: 5pt 9pt; margin: 6pt 0 8pt 0; }
+.tag { display: inline-block; font-size: 7.4pt; font-weight: bold; padding: 0.5pt 4pt;
+       border-radius: 3px; border: 1px solid; line-height: 1.25; }
+.tag.proto { background: #fee2e2; color: #991b1b; border-color: #ef4444; }
+.tag.sim { background: #dbeafe; color: #1e3a8a; border-color: #3b82f6; }
+.tag.keep { background: #dcfce7; color: #14532d; border-color: #22c55e; }
+.pb { break-after: page; height: 0; }
+.wm { position: fixed; top: 40%; left: -12%; width: 124%; text-align: center; transform: rotate(-32deg);
+      font-size: 54pt; font-weight: bold; color: rgba(220, 38, 38, 0.075); z-index: 0;
+      pointer-events: none; white-space: nowrap; }
+.content { position: relative; z-index: 1; }
+</style></head><body><div class='wm'>PROTOTYPE — NOT FOR SUBMISSION</div><div class='content'><h1>FULL A++ PROTOTYPE REPORT</h1>
+<p><strong>EEEN20020 Laboratory Report — Experiment 2: Audio Amplifier Design</strong> (Deliverables 10–14)</p>
+<div class="notice">
+<p><strong>THIS IS A PROTOTYPE / EXEMPLAR — NOT A SUBMISSION.</strong> It shows the standard, layout and reasoning of an exceptionally strong report, following the official template section by section.</p>
+<ul>
+<li>Every <span class="tag proto">PROTOTYPE</span> value, photo, screen and observation is <strong>illustrative</strong> and must be replaced with your own.</li>
+<li>Every <span class="tag sim">SIM-REF</span> value is a real <strong>ngspice</strong> result (not LTspice) and must be replaced with your own <strong>LTspice</strong> output.</li>
+<li><span class="tag keep">KEEP</span> items are genuine pre-lab design work and stay once you have checked them.</li>
+<li>Boxes marked <strong>GUIDANCE</strong> explain how to earn the marks. <strong>Delete them</strong> from your real report.</li>
+</ul>
+</div>
+<div class="pb"></div>
+
+<h2>Cover page (template page 1)</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>UCD School of Electrical and Electronic Engineering</strong></td>
+<td><strong>EEEN20020 Laboratory Report</strong></td>
+</tr>
+<tr>
+<td><strong>Experiment 2 – Audio Amplifier Design</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Name 1:</td>
+<td><code>‹STUDENT 1 FULL NAME — as on Brightspace›</code></td>
+</tr>
+<tr>
+<td>Student No. 1:</td>
+<td><code>‹8 digits, one per box›</code></td>
+</tr>
+<tr>
+<td>Name 2:</td>
+<td><code>‹STUDENT 2 FULL NAME›</code></td>
+</tr>
+<tr>
+<td>Student No. 2:</td>
+<td><code>‹8 digits, one per box›</code></td>
+</tr>
+<tr>
+<td>Declaration</td>
+<td><em>We have read and fully understood the consequences of plagiarism as discussed in the UCD Plagiarism and Academic Integrity Procedure - Student Guide. We fully understand the definition of plagiarism. We declare that the material in this submission is entirely our own work. We understand that it is necessary to wear eye protection in the laboratory.</em> (leave the wording unchanged)</td>
+</tr>
+<tr>
+<td>Signed (Student 1):</td>
+<td><code>‹signature›</code></td>
+</tr>
+<tr>
+<td>Signed (Student 2):</td>
+<td><code>‹signature›</code></td>
+</tr>
+<tr>
+<td>Date</td>
+<td><code>‹DD› / ‹MM› / 2026</code> (the date of the lab session)</td>
+</tr>
+</tbody>
+</table>
+<div class="guide">
+<p><strong>GUIDANCE (cover).</strong></p>
+<ul>
+<li>Use the official template file and do not alter the declaration text.</li>
+<li>Type each 8-digit student number one digit per box.</li>
+<li>Both students must sign. Insert a scanned or drawn signature image, or sign the printed page and scan it, whichever your module accepts.</li>
+<li>The cover page earns no marks, but an unsigned declaration can stop the report being marked at all.</li>
+</ul>
+</div>
+<div class="pb"></div>
+
+<h2>A  Amplifier design (pre-lab)  [5 marks]</h2>
+<p><strong>Nominal design parameters</strong>  <span class="tag keep">KEEP</span></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">R1max</th>
+<th style="text-align: center;">R2</th>
+<th style="text-align: center;">R3</th>
+<th style="text-align: center;">A<sub>Vmin</sub></th>
+<th style="text-align: center;">A<sub>Vmax</sub></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>50 kΩ</strong> (trimmer, code 503)</td>
+<td style="text-align: center;"><strong>10 kΩ</strong></td>
+<td style="text-align: center;"><strong>10 kΩ</strong></td>
+<td style="text-align: center;"><strong>1.00 V/V</strong></td>
+<td style="text-align: center;"><strong>6.00 V/V</strong></td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Design schematic" src="../figures/fig_A_design_schematic.png" /></p>
+<p><em>Figure A1 – Variable-gain non-inverting amplifier (741, ±5 V supplies). R1 is a 50 kΩ trimmer wired as a rheostat (wiper and one end). Pin numbers refer to the 8-pin DIP.</em> <span class="tag keep">KEEP</span></p>
+<p><strong>Design calculation and justification</strong>  <span class="tag keep">KEEP</span></p>
+<ul>
+<li><strong>Gain.</strong> For an ideal op amp (i₋ = 0, v₋ = v₊), R1 and R2 form an unloaded divider, so v_in = v_out · R2/(R1 + R2). Therefore <strong>A<sub>V</sub> = 1 + R1/R2</strong>.</li>
+<li><strong>A<sub>Vmin</sub>.</strong> With the pot at 0 Ω: A<sub>Vmin</sub> = 1 + 0/10 kΩ = <strong>1.00 V/V</strong> (a unity-gain buffer, independent of R2).</li>
+<li><strong>A<sub>Vmax</sub>.</strong> The requirement A<sub>Vmax</sub> ≥ 5 means R2 ≤ R1max/4 = 12.5 kΩ. We chose R2 = 10 kΩ, so A<sub>Vmax</sub> = 1 + 50/10 = <strong>6.00 V/V (15.6 dB)</strong>.</li>
+<li><strong>Tolerance margin.</strong> R1max/R2 = 5 versus ≥ 4 required gives a 25 % margin. The worst case with a ±10 % trimmer and ±5 % resistor is A<sub>Vmax</sub> = 1 + 45/10.5 = 5.29, still ≥ 5. By contrast, R2 = 12 kΩ would nominally give 5.17 but fails the specification for about 30 % of tolerance combinations.</li>
+<li><strong>Headroom.</strong> At A<sub>Vmax</sub>, a 1 V pk-pk input gives 6 V pk-pk (±3 V). That is inside the ≈ ±3.5–4 V swing of a 741 on ±5 V, so there is no clipping.</li>
+<li><strong>R3 = 10 kΩ.</strong> It provides the DC return path for the ≈ 80 nA input bias current; without it the output saturates (Section B). It gives an input resistance (10 kΩ) far above the generator's 50 Ω. It also roughly matches R1‖R2 = 8.3 kΩ at maximum gain, so bias-current offsets almost cancel.</li>
+<li><strong>Practical choice.</strong> Using the same 10 kΩ value for R2 and R3 means only one fixed value needs fetching.</li>
+</ul>
+<div class="guide">
+<p><strong>GUIDANCE (A, 5 marks).</strong> The template only asks for the table; the marks are for <strong>correct, consistent values with units</strong>.</p>
+<ul>
+<li>The short justification above protects those marks: it shows that A<sub>Vmax</sub> ≥ 5 by design, not by luck.</li>
+<li>Keep it to about 8 lines in the real report.</li>
+<li>Common losses: no units; A<sub>Vmax</sub> &lt; 5 (for example R2 = 12 kΩ with a 50 kΩ pot plus tolerance); R1max not matching a pot that exists (5, 10, 20 or 50 kΩ); A<sub>Vmin</sub> stated as 0.</li>
+</ul>
+</div>
+<div class="pb"></div>
+
+<h2>B  Simulation of nominal design (pre-lab)  [10 marks]</h2>
+<p><strong>Simulation configuration</strong>  <span class="tag keep">KEEP</span></p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Setting</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Simulator / model</td>
+<td>LTspice; op amp = <code>uA741</code> macromodel (<code>.lib uA741.lib</code>, opamp2 symbol)</td>
+</tr>
+<tr>
+<td>Supplies</td>
+<td>VCC = +5 V (pin 7), VEE = −5 V (pin 4)</td>
+</tr>
+<tr>
+<td>Input source</td>
+<td><code>Vsig = SINE(0 {Vpk} 1k)</code>: sine, 0 V offset, <strong>1 kHz</strong>; Vpk = 0.5 V → <strong>1 V pk-pk</strong> (also run at Vpk = 0.05 V → 100 mV pk-pk)</td>
+</tr>
+<tr>
+<td>Components</td>
+<td>R2 = R3 = 10 kΩ; <strong>R1 = 1 mΩ</strong> (pot at minimum, ≈ 0 Ω) or <strong>R1 = 50 kΩ</strong> (pot at maximum)</td>
+</tr>
+<tr>
+<td>Analyses</td>
+<td><code>.tran 0 6m 0 1u</code> (max step 1 µs = 1000 points/cycle), <code>.options plotwinsize=0</code>; <code>.op</code> with Vsig = 0.5 V DC (input positive peak)</td>
+</tr>
+<tr>
+<td>Gain extraction</td>
+<td><code>.meas TRAN Vin_pp PP V(in) FROM 2m TO 6m</code>, <code>.meas TRAN Vout_pp PP V(out) FROM 2m TO 6m</code>, <code>.meas TRAN AV PARAM Vout_pp/Vin_pp</code></td>
+</tr>
+</tbody>
+</table>
+<div class="tbox">
+<div class="tbhead">"SPICE schematics to simulate minimum and maximum voltage gain"</div>
+<p><img alt="Min-gain schematic" src="../figures/fig_B_spice_schematic_min.png" /></p>
+<p><em>Figure B1 – LTspice schematic for </em><em>minimum gain</em><em>: R1 = 1 mΩ (pot at 0 Ω), R2 = R3 = 10 kΩ, U1 = uA741, ±5 V, Vsig = 1 V pk-pk at 1 kHz.</em> <strong>[PROTOTYPE stand-in drawing of <code>exp2_nominal_min_gain.asc</code> — replace with your LTspice screenshot]</strong></p>
+<p><img alt="Max-gain schematic" src="../figures/fig_B_spice_schematic_max.png" /></p>
+<p><em>Figure B2 – LTspice schematic for </em><em>maximum gain</em><em>: identical except R1 = R1max = 50 kΩ.</em> <strong>[PROTOTYPE stand-in drawing of <code>exp2_nominal_max_gain.asc</code> — replace with your LTspice screenshot]</strong></p>
+</div>
+<div class="tbox">
+<div class="tbhead">"SPICE output (node voltages and branch currents) for minimum and maximum gain configurations"</div>
+<p><img alt="Min-gain waveforms" src="../figures/fig_B_sim_min.png" /></p>
+<p><em>Figure B3 – Minimum gain, 1 V pk-pk at 1 kHz. Top: V(in), V(out) and V(inv) coincide (unity gain, no phase shift). Bottom: branch currents I(R1) = I(R2) = I(R3) = 50 µA peak.</em> <span class="tag sim">SIM-REF: ngspice 42 — replace with your LTspice plot</span></p>
+<p><img alt="Max-gain waveforms" src="../figures/fig_B_sim_max.png" /></p>
+<p><em>Figure B4 – Maximum gain, 1 V pk-pk at 1 kHz. V(out) = 6.00 V pk-pk, in phase with V(in). V(inv) tracks V(in) (virtual short). All three branch currents are 50 µA peak, because R2 = R3 and (3.0 − 0.5) V/50 kΩ = 0.5 V/10 kΩ.</em> <span class="tag sim">SIM-REF</span></p>
+<p><strong>Table B1 – Node voltages and branch currents, <code>.op</code> at v<sub>in</sub> = +0.5 V (the positive peak of the 1 V pk-pk input)</strong>  <span class="tag sim">SIM-REF</span></p>
+<table>
+<thead>
+<tr>
+<th>Configuration</th>
+<th style="text-align: right;">V(in) [V]</th>
+<th style="text-align: right;">V(inv) [V]</th>
+<th style="text-align: right;">V(out) [V]</th>
+<th style="text-align: right;">I(R1) [µA]</th>
+<th style="text-align: right;">I(R2) [µA]</th>
+<th style="text-align: right;">I(R3) [µA]</th>
+<th style="text-align: right;">I<sub>out</sub>(U1) [µA]</th>
+<th style="text-align: right;">I(VCC) [mA]</th>
+<th style="text-align: right;">I(VEE) [mA]</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Min gain (R1 = 0)</td>
+<td style="text-align: right;">0.5000</td>
+<td style="text-align: right;">0.5000</td>
+<td style="text-align: right;">0.5000</td>
+<td style="text-align: right;">50.08</td>
+<td style="text-align: right;">50.00</td>
+<td style="text-align: right;">50.00</td>
+<td style="text-align: right;">50.08</td>
+<td style="text-align: right;">−0.566</td>
+<td style="text-align: right;">+0.566</td>
+</tr>
+<tr>
+<td>Max gain (R1 = 50 kΩ)</td>
+<td style="text-align: right;">0.5000</td>
+<td style="text-align: right;">0.4999</td>
+<td style="text-align: right;">3.0039</td>
+<td style="text-align: right;">50.08</td>
+<td style="text-align: right;">50.00</td>
+<td style="text-align: right;">50.00</td>
+<td style="text-align: right;">50.08</td>
+<td style="text-align: right;">−0.566</td>
+<td style="text-align: right;">+0.566</td>
+</tr>
+</tbody>
+</table>
+<p>The <code>.meas</code> values at the transient peak (t = 4.25 ms) agree with Table B1 to within 0.1 mV and 0.1 µA.</p>
+<p><strong>What the SPICE output shows:</strong></p>
+<ol>
+<li><strong>Virtual short confirmed.</strong> V(inv) = V(in) to within 10 µV in both configurations, so the ideal-op-amp assumption used in Section A holds.</li>
+<li><strong>The divider sets the gain.</strong> At maximum gain, V(inv)/V(out) = 0.5/3.0 = R2/(R1 + R2) = 1/6.</li>
+<li><strong>Bias current is visible.</strong> By KCL at pin 2, I(R1) − I(R2) = 50.08 − 50.00 µA = <strong>80 nA</strong>, the 741's inverting-input bias current. It is real but only 0.16 % of the signal current.</li>
+<li><strong>R3 is essential.</strong> With the source disconnected, the non-inverting bias current flows through R3, giving V(in) = −80 nA × 10 kΩ = −0.80 mV (harmless). If R3 is removed, the input floats and the simulated output <strong>saturates at −4.61 V</strong>.</li>
+<li><strong>DC offsets do not affect gain.</strong> V(out) at maximum gain is 3.9 mV above 6 × 0.5 V; this is the offset I<sub>B</sub>·R1 ≈ 80 nA × 50 kΩ. It shifts the DC level by millivolts but does not change V<sub>pp</sub>, so it does not affect the measured gain.</li>
+<li><strong>Supply current.</strong> I(VCC) = −0.566 mA means the +5 V source <em>delivers</em> 0.566 mA (SPICE sign convention: current into the + terminal).</li>
+</ol>
+</div>
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align: center;">A<sub>Vmin</sub></th>
+<th style="text-align: center;">A<sub>Vmax</sub></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Voltage gain predicted by SPICE simulation (with nominal resistor values)</strong></td>
+<td style="text-align: center;"><strong>1.000 V/V</strong> (0.99996)</td>
+<td style="text-align: center;"><strong>6.000 V/V</strong> (5.9996)</td>
+</tr>
+<tr>
+<td><em>Supporting check: same at 100 mV pk-pk input</em></td>
+<td style="text-align: center;"><em>0.99996</em></td>
+<td style="text-align: center;"><em>5.9996</em></td>
+</tr>
+</tbody>
+</table>
+<p><span class="tag sim">SIM-REF</span></p>
+<p>The predicted gains are identical at 100 mV pk-pk and 1 V pk-pk, so the circuit is linear over this range. The residual −0.007 % from 6.000 comes from the 741's finite loop gain at 1 kHz: T ≈ (GBW/f)/A<sub>V</sub> ≈ 167, which gives a magnitude error of order 1/(2T²) plus A<sub>V</sub>/A<sub>0</sub>, and a phase lag of about 0.34°. For audio purposes the ideal design equation is exact.</p>
+<p><img alt="AC response" src="../figures/fig_B_sim_ac.png" /></p>
+<p><em>Figure B5 (supplementary) – Closed-loop frequency response. The −3 dB bandwidth is 182 kHz at A<sub>Vmax</sub> and 1.4 MHz at A<sub>Vmin</sub>. The response is flat to 0.6 % across 20 Hz–20 kHz, so the 1 kHz gain applies to the whole audio band. A 32 Ω (headphone) load changes the 1 kHz gain by only 0.02 %.</em> <span class="tag sim">SIM-REF</span></p>
+<div class="guide">
+<p><strong>GUIDANCE (B, 10 marks).</strong> Marks come from four things:</p>
+<ol>
+<li><strong>Two schematics</strong>, readable, with values, source settings and directives visible.</li>
+<li><strong>Waveforms</strong> of input and output for both configurations, with axes and labels.</li>
+<li><strong>Node voltages and branch currents</strong> for both: the <code>.op</code> table screenshot or <code>.meas</code> log, or both.</li>
+<li><strong>Correct predicted gains</strong> in the table.</li>
+</ol>
+<p>Interpretation like points 1–6 above is what lifts a correct section to an exceptional one. Use <strong>your own LTspice screenshots</strong>, never the stand-ins.</p>
+</div>
+<div class="pb"></div>
+
+<h2>E  Amplifier construction  [4 marks]</h2>
+<p><em>(The template labels this section "E"; it corresponds to stage C of the lab sheet. Keep the template's label.)</em></p>
+<div class="tbox">
+<div class="tbhead">"Insert a photo of your circuit layout on the breadboard"</div>
+<p><img alt="Prototype breadboard layout" src="../figures/fig_C_breadboard_prototype.png" /></p>
+<p><em>Figure E1 – Breadboard realisation of the amplifier.</em></p>
+<ul>
+<li><em>The 741 straddles the centre channel, pin 1 at the notch/dot.</em></li>
+<li><em>R1 (50 kΩ trimmer, wiper and one end) connects the output column (pin 6) to the inverting-input column (pin 2).</em></li>
+<li><em>R2 = 10 kΩ runs from pin 2 to GND, and R3 = 10 kΩ from pin 3 (input) to GND.</em></li>
+<li><em>Supply rails: red +5 V, black −5 V, green GND. Signal leads: yellow v<sub>in</sub>, blue v<sub>out</sub>.</em></li>
+</ul>
+<p><span class="tag proto">PROTOTYPE LAYOUT — REPLACE WITH PHOTOGRAPH OF ACTUAL CIRCUIT</span></p>
+</div>
+<p><strong>Table I – Colour coding of signals</strong> (from the lab sheet)  <span class="tag proto">PROTOTYPE — record your actual colours</span></p>
+<table>
+<thead>
+<tr>
+<th>Signal</th>
+<th style="text-align: center;">V<sub>S+</sub></th>
+<th style="text-align: center;">V<sub>S−</sub></th>
+<th style="text-align: center;">GND (Ref Node)</th>
+<th style="text-align: center;">v<sub>in</sub> (Input)</th>
+<th style="text-align: center;">v<sub>out</sub> (Output)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Colour</td>
+<td style="text-align: center;">Red</td>
+<td style="text-align: center;">Black</td>
+<td style="text-align: center;">Green</td>
+<td style="text-align: center;">Yellow</td>
+<td style="text-align: center;">Blue</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Supply verification before applying a signal</strong> (optional extra; adds credibility)  <span class="tag proto">PROTOTYPE</span></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Pin 7 (V<sub>S+</sub>)</th>
+<th style="text-align: center;">Pin 4 (V<sub>S−</sub>)</th>
+<th style="text-align: center;">Pin 6, no input (output DC offset)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">+5.02 V</td>
+<td style="text-align: center;">−5.01 V</td>
+<td style="text-align: center;">+3 mV</td>
+</tr>
+</tbody>
+</table>
+<div class="guide">
+<p><strong>GUIDANCE (E construction, 4 marks).</strong></p>
+<ul>
+<li><strong>Photo:</strong> taken top-down, in focus, with the whole circuit and the 4 mm sockets in frame. Every component must be identifiable: label the 741, R1, R2 and R3 in the caption, or with small paper tags or arrows on the photo.</li>
+<li><strong>Wiring:</strong> tidy, short wires, and the colour code followed.</li>
+<li><strong>Consistency:</strong> the layout should visibly match Figure A1.</li>
+<li><strong>Common losses:</strong> blurred photo; parts hidden under wires; the photo shows a different circuit from the one designed (for example a different pot).</li>
+</ul>
+</div>
+<div class="pb"></div>
+
+<h2>D  Amplifier measurements (sinusoidal test signal)  [18 marks]</h2>
+<div class="tbox">
+<div class="tbhead">"Insert a photo of your measurement setup showing the breadboard, power supplies, signal source and oscilloscope."</div>
+<p><img alt="Prototype set-up" src="../figures/fig_D_setup_prototype.png" /></p>
+<p><em>Figure D1 – Measurement set-up.</em></p>
+<ul>
+<li><em>Dual DC supply: two 5.0 V sources in series giving ±5 V, current limit at 9 o'clock.</em></li>
+<li><em>Rigol DG822: sine, 1.000 kHz, 1.000 V pk-pk, 0 V offset, Load = HighZ. It feeds the amplifier input via the BNC–4 mm coaxial lead.</em></li>
+<li><em>R&amp;S HMO1002 oscilloscope: CH1 = input, CH2 = output, common ground, DC coupling, 1× setting.</em></li>
+</ul>
+<p><span class="tag proto">PROTOTYPE DIAGRAM — REPLACE WITH PHOTO OF YOUR SET-UP</span></p>
+</div>
+<h3>Minimum gain configuration</h3>
+<div class="tbox">
+<div class="tbhead">"Insert a photo of the oscilloscope screen showing the measured sinusoidal 'Input' and 'Output' signals with the signal generator as input and minimum gain."</div>
+<p><img alt="Mock scope, sine, min gain" src="../figures/fig_D_scope_sine_min.png" /></p>
+<p><em>Figure D2 – Minimum gain (pot at its 0 Ω end stop).</em></p>
+<ul>
+<li><em>CH1 (yellow) = input, CH2 (cyan) = output, both 200 mV/div. Traces are offset by ±1 div for clarity. Timebase 200 µs/div; trigger CH1 rising edge at 0 V.</em></li>
+<li><em>The output is an in-phase, equal-amplitude replica of the input.</em></li>
+<li><em>Readouts: Vpp(1) = 1.01 V, Vpp(2) = 1.02 V, RMS 356 mV / 358 mV, f = 1.000 kHz.</em></li>
+</ul>
+<p><span class="tag proto">PROTOTYPE MOCK SCREEN — replace with a photo of your oscilloscope</span></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Input (pk-pk)</th>
+<th style="text-align: center;">Output (pk-pk)</th>
+<th style="text-align: center;">Measured A<sub>Vmin</sub></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>1.01 V</strong></td>
+<td style="text-align: center;"><strong>1.02 V</strong></td>
+<td style="text-align: center;"><strong>1.01 V/V</strong></td>
+</tr>
+</tbody>
+</table>
+<p><span class="tag proto">PROTOTYPE / ILLUSTRATIVE VALUES — REPLACE WITH ACTUAL MEASUREMENTS</span></p>
+</div>
+<p><strong>Working:</strong> A<sub>Vmin</sub> = V<sub>out,pp</sub>/V<sub>in,pp</sub> = 1.02 V / 1.01 V = 1.0099 ≈ <strong>1.01 V/V</strong> (3 s.f., matching the 3-s.f. readings).</p>
+<p><strong>Interpretation:</strong></p>
+<ul>
+<li>The output is +1.0 % above unity, in phase and undistorted.</li>
+<li>About 0.35 % of this is the pot's end resistance (35 Ω measured in Section G: 1 + 35/9930 = 1.0035).</li>
+<li>The remainder (≈ 0.6 %) is within the channel-to-channel calibration and read-out resolution of the oscilloscope (Section F).</li>
+<li>The ≈ 0.06° phase lag predicted by SPICE is far too small to see.</li>
+</ul>
+<h3>Maximum gain configuration</h3>
+<div class="tbox">
+<div class="tbhead">"Insert a photo of the oscilloscope screen showing the measured sinusoidal 'Input' and 'Output' signals with the signal generator as input and maximum gain."</div>
+<p><img alt="Mock scope, sine, max gain" src="../figures/fig_D_scope_sine_max.png" /></p>
+<p><em>Figure D3 – Maximum gain (pot at its 50 kΩ end stop).</em></p>
+<ul>
+<li><em>CH1 (yellow) = input at 200 mV/div; CH2 (cyan) = output at 1 V/div. Timebase 200 µs/div.</em></li>
+<li><em>The output is in phase with the input, with rounded peaks at about ±2.9 V, so there is no clipping.</em></li>
+<li><em>Readouts: Vpp(1) = 1.01 V, Vpp(2) = 5.88 V, RMS 356 mV / 2.07 V, f = 1.000 kHz.</em></li>
+</ul>
+<p><span class="tag proto">PROTOTYPE MOCK SCREEN — replace with a photo of your oscilloscope</span></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Input (pk-pk)</th>
+<th style="text-align: center;">Output (pk-pk)</th>
+<th style="text-align: center;">Measured A<sub>Vmax</sub></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>1.01 V</strong></td>
+<td style="text-align: center;"><strong>5.88 V</strong></td>
+<td style="text-align: center;"><strong>5.82 V/V</strong></td>
+</tr>
+</tbody>
+</table>
+<p><span class="tag proto">PROTOTYPE / ILLUSTRATIVE VALUES — REPLACE WITH ACTUAL MEASUREMENTS</span></p>
+</div>
+<p><strong>Working:</strong> A<sub>Vmax</sub> = 5.88 V / 1.01 V = 5.822 ≈ <strong>5.82 V/V</strong>. RMS cross-check: 2.07 V / 356 mV = 5.81, within 0.2 %.</p>
+<p><strong>Interpretation:</strong></p>
+<ul>
+<li><strong>Range verified.</strong> The amplifier's gain is adjustable from <strong>1.01 to 5.82 V/V</strong>, which covers the required 1 V/V to ≥ 5 V/V with a 16 % margin above 5.</li>
+<li><strong>Agreement.</strong> A<sub>Vmax</sub> is 3.0 % below the 6.00 design value. Section F attributes this to component tolerance, and Section G confirms it.</li>
+<li><strong>No clipping.</strong> The peaks (≈ ±2.9 V) stay inside the 741's ±5 V-supply headroom.</li>
+</ul>
+<div class="guide">
+<p><strong>GUIDANCE (D, 18 marks, the largest section).</strong></p>
+<p>Each scope photo must show:</p>
+<ul>
+<li><strong>both</strong> traces, each spanning ≥ 5 divisions and not clipped off-screen;</li>
+<li>legible <strong>V/div</strong> for both channels, <strong>time/div</strong>, and <strong>Vpp(CH1), Vpp(CH2)</strong> readouts (frequency too, ideally).</li>
+</ul>
+<p>Each table must:</p>
+<ul>
+<li>give the <strong>same numbers that are visible in the photo</strong>, with <strong>units</strong>;</li>
+<li>give a gain equal to Output ÷ Input, to sensible significant figures (3 s.f.).</li>
+</ul>
+<p>The set-up photo must show <strong>all four</strong>: breadboard, PSU, generator and scope.</p>
+<p>The A<sub>Vmax</sub> measured must be <strong>≥ 5</strong>. If yours is not, fix the circuit before moving on; do not just report it.</p>
+</div>
+<div class="pb"></div>
+
+<h2>E  Amplifier measurements (bench test signal)  [14 marks]</h2>
+<p><strong>How the bench test signal differs from the 1 kHz sinusoid.</strong> It is a recorded speech/music-type signal:</p>
+<ul>
+<li><strong>broadband</strong>, with energy from about 100 Hz to several kHz, rather than a single 1 kHz tone;</li>
+<li><strong>non-periodic and constantly changing</strong>, so it cannot be triggered stably and Vpp depends on the moment captured;</li>
+<li><strong>an order of magnitude smaller</strong> (≈ 150 mV pk-pk rather than 1 V);</li>
+<li>of <strong>unknown source impedance</strong>.</li>
+</ul>
+<p>Each measurement is therefore a single acquisition frozen with RUN/STOP. Both channels are sampled at the same instants, so only the ratio <em>within one capture</em> is meaningful. The input Vpp legitimately differs between the minimum- and maximum-gain captures.</p>
+<h3>Minimum gain configuration</h3>
+<div class="tbox">
+<div class="tbhead">"Insert a photo of the oscilloscope screen showing the measured 'Input' and 'Output' signals with the bench test signal as input and minimum gain."</div>
+<p><img alt="Mock scope, bench, min gain" src="../figures/fig_E_scope_bench_min.png" /></p>
+<p><em>Figure E2 – Bench test signal, minimum gain, single capture held with RUN/STOP.</em></p>
+<ul>
+<li><em>CH1 (input) and CH2 (output) both at 50 mV/div, offset ±2 div. Timebase 5 ms/div.</em></li>
+<li><em>The output reproduces every feature of the input at the same amplitude.</em></li>
+<li><em>Readouts: Vpp(1) = 148 mV, Vpp(2) = 150 mV; RMS 24.8 mV / 25.0 mV.</em></li>
+</ul>
+<p><span class="tag proto">PROTOTYPE MOCK SCREEN — replace with a photo of your oscilloscope</span></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Input (pk-pk)</th>
+<th style="text-align: center;">Output (pk-pk)</th>
+<th style="text-align: center;">Measured A<sub>Vmin</sub></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>148 mV</strong></td>
+<td style="text-align: center;"><strong>150 mV</strong></td>
+<td style="text-align: center;"><strong>1.01 V/V</strong></td>
+</tr>
+</tbody>
+</table>
+<p><span class="tag proto">PROTOTYPE / ILLUSTRATIVE VALUES — REPLACE WITH ACTUAL MEASUREMENTS</span></p>
+</div>
+<p><strong>Working:</strong> 150 mV / 148 mV = 1.014 ≈ <strong>1.01 V/V</strong>. RMS cross-check: 25.0/24.8 = 1.01.</p>
+<p><strong>Interpretation:</strong> this agrees with the sinusoidal A<sub>Vmin</sub> (1.01). At unity gain the amplifier still gives power gain: its input draws negligible current, while its output can drive the low-impedance headphones.</p>
+<h3>Maximum gain configuration</h3>
+<div class="tbox">
+<div class="tbhead">"Insert a photo of the oscilloscope screen showing the measured 'Input' and 'Output' signals with the bench test signal as input and maximum gain."</div>
+<p><img alt="Mock scope, bench, max gain" src="../figures/fig_E_scope_bench_max.png" /></p>
+<p><em>Figure E3 – Bench test signal, maximum gain, single capture.</em></p>
+<ul>
+<li><em>CH1 (input) 50 mV/div; CH2 (output) 200 mV/div. Timebase 5 ms/div.</em></li>
+<li><em>The output is a scaled, undistorted copy of the input: no flattened peaks.</em></li>
+<li><em>Readouts: Vpp(1) = 162 mV, Vpp(2) = 928 mV; RMS 27.2 mV / 157.9 mV. Headphones connected.</em></li>
+</ul>
+<p><span class="tag proto">PROTOTYPE MOCK SCREEN — replace with a photo of your oscilloscope</span></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Input (pk-pk)</th>
+<th style="text-align: center;">Output (pk-pk)</th>
+<th style="text-align: center;">Measured A<sub>Vmax</sub></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>162 mV</strong></td>
+<td style="text-align: center;"><strong>928 mV</strong></td>
+<td style="text-align: center;"><strong>5.73 V/V</strong></td>
+</tr>
+</tbody>
+</table>
+<p><span class="tag proto">PROTOTYPE / ILLUSTRATIVE VALUES — REPLACE WITH ACTUAL MEASUREMENTS</span></p>
+</div>
+<p><strong>Working:</strong> 928 mV / 162 mV = 5.728 ≈ <strong>5.73 V/V</strong>. RMS cross-check: 157.9/27.2 = <strong>5.81 V/V</strong>.</p>
+<p><strong>Interpretation:</strong></p>
+<ul>
+<li>The Vpp-based gain is 1.5 % below the sinusoidal A<sub>Vmax</sub> (5.82), whereas the RMS-based gain agrees within 0.2 %.</li>
+<li>The amplifier is linear and flat across the audio band (Figure B5), so its gain for speech/music equals its 1 kHz gain.</li>
+<li>The small Vpp discrepancy is a property of the <em>estimator</em>. Vpp of a noisy, non-repetitive signal is set by two single extreme samples on each channel, and those are affected by noise and quantisation differently at 50 mV/div and 200 mV/div.</li>
+<li>RMS averages over thousands of samples, so it is the more reliable gain estimate for the bench signal.</li>
+</ul>
+<div class="guide">
+<p><strong>GUIDANCE (E bench, 14 marks).</strong></p>
+<ul>
+<li>Capture with <strong>RUN/STOP</strong> so that the photo, Vpp(1) and Vpp(2) all come from the <strong>same frozen trace</strong>.</li>
+<li>Make each trace large on screen, but with peaks not cut off.</li>
+<li>Use a timebase of about 2–5 ms/div: long timebases (50 ms/div) lower the sample rate and miss peaks.</li>
+<li>Recording the RMS values too costs nothing and gives you a powerful cross-check for the commentary.</li>
+<li><strong>Common losses:</strong> gain computed from input and output captured at <em>different</em> times; trace clipped off the top of the screen; photo without readouts.</li>
+</ul>
+</div>
+<div class="pb"></div>
+
+<h2>F  Summary and commentary  [9 marks]</h2>
+<p><strong>Signal quality (Demonstrator to check)</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align: center;">Yes</th>
+<th style="text-align: center;">No</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Is the signal audible and free of distortion?</td>
+<td style="text-align: center;"><strong>☒</strong></td>
+<td style="text-align: center;">☐</td>
+</tr>
+</tbody>
+</table>
+<p><span class="tag proto">PROTOTYPE — HYPOTHETICAL OUTCOME. Only the Demonstrator's actual judgement may go here.</span></p>
+<p><strong>Summary and commentary</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align: center;">A<sub>Vmin</sub></th>
+<th style="text-align: center;">A<sub>Vmax</sub></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Design</strong></td>
+<td style="text-align: center;">1.00 V/V <span class="tag keep">KEEP</span></td>
+<td style="text-align: center;">6.00 V/V <span class="tag keep">KEEP</span></td>
+</tr>
+<tr>
+<td><strong>Simulation</strong></td>
+<td style="text-align: center;">1.000 V/V <span class="tag sim">SIM-REF</span></td>
+<td style="text-align: center;">6.000 V/V (5.9996) <span class="tag sim">SIM-REF</span></td>
+</tr>
+<tr>
+<td><strong>Measurement</strong></td>
+<td style="text-align: center;">1.01 V/V <span class="tag proto">PROTOTYPE</span></td>
+<td style="text-align: center;">5.82 V/V <span class="tag proto">PROTOTYPE</span></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Commentary (How closely do the designed, simulated and measured gains match? Explain any differences you have observed.)</strong>  <span class="tag proto">PROTOTYPE — rewrite around your own numbers</span></p>
+<p><strong>1. Design vs simulation: agreement to 0.01 %.</strong></p>
+<ul>
+<li>The SPICE gains (0.99996 and 5.9996 V/V) match the design values (1.00 and 6.00 V/V) to within 0.007 %, even though the uA741 model includes finite open-loop gain, finite bandwidth, bias currents and output limits.</li>
+<li>At 1 kHz the 741's open-loop gain is about GBW/f ≈ 1000. This gives a loop gain of ≈ 167 at A<sub>Vmax</sub>, and the closed-loop magnitude error is only of order 10⁻⁵, with a 0.34° phase lag.</li>
+<li>The gains are identical at 100 mV and 1 V pk-pk (linearity) and for supplies of ±4.75 V to ±5.25 V. The supply only sets the clipping limit, not the gain.</li>
+<li>The ideal relation A<sub>V</sub> = 1 + R1/R2 is therefore an accurate model at audio frequencies. Any real discrepancy must come from the components or the measurement, not the op-amp.</li>
+</ul>
+<p><strong>2. Simulation vs measurement: +1.0 % (A<sub>Vmin</sub>), −3.0 % (A<sub>Vmax</sub>).</strong></p>
+<p>The specification is met: 1.01 → 5.82 V/V. The deviations have identifiable physical causes, listed in order of size:</p>
+<ul>
+<li><strong>(a) Resistor and potentiometer tolerance (dominant, A<sub>Vmax</sub> only).</strong><ul>
+<li>Since A<sub>V</sub> − 1 = R1/R2, ΔA<sub>V</sub>/A<sub>V</sub> = (A<sub>V</sub>−1)/A<sub>V</sub> · (ΔR1/R1 − ΔR2/R2) = 0.83 · (ΔR1/R1 − ΔR2/R2).</li>
+<li>A ±10 % trimmer and ±5 % resistor allow up to ±12.5 %. The observed −3.0 % corresponds to the ratio R1max/R2 being 3.6 % low.</li>
+<li>Section G confirms this: with the DMM-measured values (47.62 kΩ, 9.93 kΩ) the predicted A<sub>Vmax</sub> is 5.80, within 0.4 % of the measurement.</li>
+<li>A<sub>Vmin</sub> is insensitive to tolerance (sensitivity factor 0 at A<sub>V</sub> = 1).</li>
+</ul>
+</li>
+<li><strong>(b) Potentiometer end resistance (A<sub>Vmin</sub>).</strong><ul>
+<li>At its end stop the trimmer does not reach 0 Ω. The measured 35 Ω gives A<sub>Vmin</sub> = 1 + 35/9930 = 1.0035, which accounts for about a third of the +1.0 %.</li>
+<li>Wiper contact resistance (a few Ω) in series with 50 kΩ is negligible at A<sub>Vmax</sub>.</li>
+</ul>
+</li>
+<li><strong>(c) Oscilloscope measurement uncertainty.</strong><ul>
+<li>Each channel has a DC gain accuracy of a few per cent (HMO1002 data sheet; ±2 % assumed here). Vpp is resolved to about 1/25 div (±0.8 % at 5 div), and random noise slightly inflates each Vpp reading.</li>
+<li>In combination this gives about ±3 % (RSS) on a two-channel ratio, so A<sub>Vmax</sub> = 5.82 ± 0.18 V/V.</li>
+<li>Because the circuit's true A<sub>Vmin</sub> is known to be 1.0035, the measured 1.0099 implies a CH2/CH1 calibration ratio of ≈ 1.006. Dividing A<sub>Vmax</sub> by it gives 5.785, which agrees with the measured-component prediction (5.795) to 0.2 %, the resolution limit of the readings.</li>
+</ul>
+</li>
+<li><strong>(d) Non-ideal 741 effects: negligible.</strong><ul>
+<li>Loop-gain error ≈ 0.002 %.</li>
+<li>Slew rate: 0.5 V/µs available versus 0.019 V/µs required.</li>
+<li>Output swing: ±2.9 V used of ≈ ±3.5–4 V available; the peaks were rounded, with no clipping.</li>
+<li>Bias current and offset voltage shift the DC level by a few mV (SPICE: 4 mV) but cannot change Vpp.</li>
+</ul>
+</li>
+<li><strong>(e) Loading: negligible for the gain.</strong><ul>
+<li>The generator's 50 Ω output resistance into R3 = 10 kΩ lowers v<sub>in</sub> by 0.5 % relative to the set amplitude (hence ≈ 1.00 V rather than exactly 1 V). The gain is computed from the <em>measured</em> input, so this cancels.</li>
+<li>The scope's 1 MΩ ‖ 16 pF is negligible against a closed-loop output resistance below 1 Ω.</li>
+<li>The headphones (≈ 32 Ω) reduce the 1 kHz gain by about 0.02 % (SPICE) while drawing ≈ 15 mA peak, safely below the 25 mA limit.</li>
+</ul>
+</li>
+<li><strong>(f) Supply voltage: no effect on gain.</strong> With the measured +5.02/−5.01 V, the gain is set by R1/R2 alone (PSRR ≈ 96 dB; SPICE gain unchanged for ±5 % supply variation).</li>
+<li><strong>(g) Breadboard and signal generator: not plausible causes.</strong><ul>
+<li>Contact resistances (mΩ) against 10 kΩ, and stray capacitances (pF) giving poles above ≈ 5 MHz, are many orders of magnitude too small to matter at 1 kHz.</li>
+<li>The generator's amplitude and frequency accuracy do not enter a ratio of two <em>measured</em> voltages. The only way the generator could corrupt the result is clipping (50 Ω-mode doubling), and the measured 1.01 V input rules that out.</li>
+</ul>
+</li>
+</ul>
+<p><strong>3. Bench signal vs sinusoid.</strong></p>
+<ul>
+<li>The bench A<sub>Vmin</sub> (1.01) matches the sine value. The bench A<sub>Vmax</sub> is 5.73 by Vpp but 5.81 by RMS, within 0.2 % of the sine value.</li>
+<li>The amplifier gain is therefore the same for real audio. The Vpp shortfall comes from using single extreme samples of a non-repetitive signal.</li>
+</ul>
+<p><strong>Conclusion.</strong></p>
+<ul>
+<li>Design, simulation and measurement agree within the combined component tolerance and measurement uncertainty.</li>
+<li>The dominant cause of the 3 % shortfall at maximum gain is component tolerance, and re-simulating with measured values (Section G) reduces the discrepancy to 0.4 %.</li>
+<li>Possible refinements:<ul>
+<li>1 % resistors, or trimming the pot to a measured value;</li>
+<li>averaged acquisitions;</li>
+<li>a channel-swap calibration;</li>
+<li>RMS-based gain estimates.</li>
+</ul>
+</li>
+</ul>
+<div class="guide">
+<p><strong>Box-length version (≈ 170 words), if the template box is small:</strong></p>
+<p>The design (1.00/6.00 V/V) and simulation (1.000/5.9996 V/V) agree to 0.01 %. At 1 kHz the 741's loop gain (≈ 167) makes the ideal relation A<sub>V</sub> = 1 + R1/R2 exact for practical purposes. The gains are unchanged at 100 mV/1 V input and for ±5 % supply variation.</p>
+<p>The measured range of 1.01–5.82 V/V meets the specification. A<sub>Vmax</sub> is 3.0 % low, consistent with resistor and pot tolerance: ΔA<sub>V</sub>/A<sub>V</sub> = 0.83(ΔR1/R1 − ΔR2/R2), up to ±12.5 %. Re-simulating with DMM-measured values predicts 5.80, within 0.4 %. A<sub>Vmin</sub> is 1 % high because of the pot's 35 Ω end resistance (+0.35 %) and scope channel mismatch.</p>
+<p>Scope accuracy (≈ ±3 % on a two-channel ratio) covers the residual. Finite op-amp gain, slew rate, offsets, supply voltage, loading and the breadboard each contribute &lt; 0.1 % at 1 kHz.</p>
+<p>The bench signal gives the same gain by RMS (5.81); its Vpp ratio (5.73) is less reliable for a non-repetitive signal.</p>
+<p><strong>GUIDANCE (F, 9 marks).</strong></p>
+<ul>
+<li><strong>Table:</strong> complete, with units, and with the same numbers as Sections A, B and D.</li>
+<li><strong>Commentary:</strong> quantify every agreement as a percentage, and give a <strong>mechanism</strong> for each difference, with numbers showing it is the right size.</li>
+<li>Rule irrelevant effects in or out explicitly, and do not just list error sources.</li>
+<li>If you have measured values, use Section G to <em>prove</em> your explanation.</li>
+</ul>
+</div>
+<h3>Audio-quality analysis (model discussion)  <span class="tag proto">PROTOTYPE — HYPOTHETICAL OUTCOME; replace with what you and the Demonstrator actually heard</span></h3>
+<ul>
+<li><strong>Audibility.</strong><ul>
+<li>At A<sub>V</sub> = 1 the bench signal was audible but quiet (≈ 25–35 mV rms, of order 20–40 µW into 32 Ω headphones).</li>
+<li>At A<sub>Vmax</sub> it was clearly audible at a comfortable level. The Demonstrator judged it <strong>audible and free of distortion</strong>.</li>
+</ul>
+</li>
+<li><strong>Why more voltage gain is louder.</strong> The headphones have a fixed impedance, so the acoustic power is proportional to V².<ul>
+<li>Raising the gain from 1 to 5.82 increases the level by 20 log₁₀ 5.82 = <strong>15.3 dB</strong>, a 34× power increase.</li>
+<li>Perceived loudness roughly doubles per 10 dB, so the maximum-gain setting sounded about <strong>2.9× as loud</strong>.</li>
+<li>The amplifier cannot improve the source's signal-to-noise ratio: any hiss already in the bench signal is amplified by the same factor.</li>
+</ul>
+</li>
+<li><strong>Absence of distortion, linked to the waveforms.</strong> The CH2 trace (Figure E3) is a scaled copy of CH1, with no flattened peaks and no change of shape.<ul>
+<li>Clipping would add odd harmonics, heard as harshness or buzz. None was seen or heard.</li>
+<li>SPICE shows the gain flat to within 0.6 % up to 20 kHz, so no part of the audio spectrum is emphasised or suppressed (no tonal coloration).</li>
+</ul>
+</li>
+<li><strong>Limits set by the 741 and the ±5 V supplies.</strong><ul>
+<li>The output can swing only about ±3.5–4 V before clipping.</li>
+<li>More importantly, the 741's output current is limited to about 25 mA. Into 32 Ω headphones that caps the undistorted peak at ≈ 0.8 V.</li>
+<li>At maximum gain the bench signal peaks at about ±0.47 V (≈ 15 mA), a 40 % margin. Roughly 1.7× more gain or a louder source would cause current limiting on peaks and audible distortion.</li>
+<li>The 741's slew rate (0.5 V/µs) and bandwidth (≈ 180 kHz at A<sub>V</sub> = 6) are more than adequate for these small audio-band signals.</li>
+</ul>
+</li>
+</ul>
+<div class="pb"></div>
+
+<h2>G  Optional (resimulation with <em>measured</em> component values)</h2>
+<p><strong>Nominal and measured parameters</strong>  <span class="tag proto">Nominal: KEEP · Measured: PROTOTYPE — hypothetical values, NOT measurements</span></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align: center;">R1max</th>
+<th style="text-align: center;">R2</th>
+<th style="text-align: center;">R3</th>
+<th style="text-align: center;">A<sub>Vmin</sub></th>
+<th style="text-align: center;">A<sub>Vmax</sub></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Nominal</strong></td>
+<td style="text-align: center;">50 kΩ</td>
+<td style="text-align: center;">10 kΩ</td>
+<td style="text-align: center;">10 kΩ</td>
+<td style="text-align: center;">1.00</td>
+<td style="text-align: center;">6.00</td>
+</tr>
+<tr>
+<td><strong>Measured</strong></td>
+<td style="text-align: center;">47.62 kΩ (R1min = 35 Ω)</td>
+<td style="text-align: center;">9.93 kΩ</td>
+<td style="text-align: center;">9.97 kΩ</td>
+<td style="text-align: center;">1.0035*</td>
+<td style="text-align: center;">5.796*</td>
+</tr>
+</tbody>
+</table>
+<p>* calculated from the measured resistances: 1 + R1/R2.</p>
+<p><strong>Resimulation of design with <em>measured</em> parameter values</strong></p>
+<div class="tbox">
+<div class="tbhead">"SPICE schematics to simulate minimum and maximum voltage gain"</div>
+<p><img alt="Measured-value schematic" src="../figures/fig_G_spice_schematic_meas.png" /></p>
+<p><em>Figure G1 – The same schematic with <code>.param R1min_m=35 R1max_m=47.62k R2_m=9.93k R3_m=9.97k</code>. R1 = {R1min_m} in the minimum-gain file and {R1max_m} in the maximum-gain file.</em> <strong>[PROTOTYPE values · stand-in drawing of <code>exp2_measured_*.asc</code>]</strong></p>
+</div>
+<div class="tbox">
+<div class="tbhead">"SPICE output (node voltages and branch currents) for minimum and maximum gain configurations"</div>
+<p><img alt="G min" src="../figures/fig_G_sim_min.png" /></p>
+<p><img alt="G max" src="../figures/fig_G_sim_max.png" /></p>
+<p><em>Figures G2 and G3 – Re-simulation with the prototype "measured" values, 1 V pk-pk at 1 kHz.</em> <span class="tag proto">SIM-REF run on PROTOTYPE values — redo with your own DMM readings in LTspice</span></p>
+<table>
+<thead>
+<tr>
+<th><code>.op</code>, v<sub>in</sub> = +0.5 V</th>
+<th style="text-align: right;">V(in) [V]</th>
+<th style="text-align: right;">V(inv) [V]</th>
+<th style="text-align: right;">V(out) [V]</th>
+<th style="text-align: right;">I(R1) [µA]</th>
+<th style="text-align: right;">I(R2) [µA]</th>
+<th style="text-align: right;">I(R3) [µA]</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Min gain (R1 = 35 Ω)</td>
+<td style="text-align: right;">0.5000</td>
+<td style="text-align: right;">0.5000</td>
+<td style="text-align: right;">0.5018</td>
+<td style="text-align: right;">50.43</td>
+<td style="text-align: right;">50.35</td>
+<td style="text-align: right;">50.15</td>
+</tr>
+<tr>
+<td>Max gain (R1 = 47.62 kΩ)</td>
+<td style="text-align: right;">0.5000</td>
+<td style="text-align: right;">0.5000</td>
+<td style="text-align: right;">2.9015</td>
+<td style="text-align: right;">50.43</td>
+<td style="text-align: right;">50.35</td>
+<td style="text-align: right;">50.15</td>
+</tr>
+</tbody>
+</table>
+</div>
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align: center;">A<sub>Vmin</sub></th>
+<th style="text-align: center;">A<sub>Vmax</sub></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Predicted by SPICE simulation (with measured resistor values)</strong></td>
+<td style="text-align: center;">1.0035 V/V</td>
+<td style="text-align: center;">5.795 V/V</td>
+</tr>
+<tr>
+<td><strong>Measured values</strong></td>
+<td style="text-align: center;">1.01 V/V</td>
+<td style="text-align: center;">5.82 V/V</td>
+</tr>
+</tbody>
+</table>
+<p><span class="tag proto">PROTOTYPE</span></p>
+<p><strong>Commentary (how closely do the simulated and measured results match when the measured component values are used? Explain any differences.)</strong>  <span class="tag proto">PROTOTYPE</span></p>
+<ul>
+<li><strong>Agreement improves sharply.</strong> Using the measured resistances moves the predicted A<sub>Vmax</sub> from 6.000 to 5.795 V/V. The discrepancy with the measurement (5.82 V/V) falls from <strong>−3.0 % to +0.4 %</strong>.<ul>
+<li>This confirms that component tolerance, mainly the trimmer being 4.8 % below its 50 kΩ nominal, was the cause of the shortfall.</li>
+<li>The predicted A<sub>Vmin</sub> rises to 1.0035 because of the pot's 35 Ω end resistance; the measured value is 1.01 (+0.6 %).</li>
+</ul>
+</li>
+<li><strong>The residual is a measurement signature.</strong> It has the same sign and nearly the same size at both settings (+0.6 % and +0.4 %), which is the signature of a gain-calibration mismatch between the two scope channels, not of the circuit.<ul>
+<li>The design is linear, so a channel-gain error scales both readings equally.</li>
+<li>Dividing the measured A<sub>Vmax</sub> by the inferred CH2/CH1 ratio (1.0099/1.0035 = 1.006) gives 5.785 V/V, within <strong>0.2 %</strong> of the re-simulation. That is at the read-out resolution of the oscilloscope.</li>
+</ul>
+</li>
+<li><strong>No unexplained discrepancy remains.</strong> The remaining non-idealities (op-amp loop gain ≈ 0.002 %, DMM accuracy ≈ 0.1 %, breadboard contacts ≈ 10⁻⁶) are below this level.</li>
+<li><strong>Conclusion:</strong> with measured component values, simulation and measurement agree to within the measurement uncertainty.</li>
+</ul>
+<div class="guide">
+<p><strong>GUIDANCE (G, optional).</strong></p>
+<ul>
+<li>Measure every resistor and the pot (both extremes, wiper to the end you used) <strong>out of circuit</strong>. Record the values on the data sheet, ideally with a photo of the DMM.</li>
+<li>Edit the <code>.param</code> line in <code>exp2_measured_min_gain.asc</code> and <code>exp2_measured_max_gain.asc</code> and re-run.</li>
+<li>This section is unmarked, but it turns the F commentary from "probably tolerances" into proof. Do it if time allows: it takes about 10 minutes.</li>
+</ul>
+</div>
+<div class="pb"></div>
+
+<h2>Appendix P1 — Specification of each required oscilloscope figure (Deliverable 11)</h2>
+<table>
+<thead>
+<tr>
+<th>Figure</th>
+<th>CH1 (input)</th>
+<th>CH2 (output)</th>
+<th>Timebase</th>
+<th>Trigger</th>
+<th>Expected readouts</th>
+<th>Gain relation visible</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D2 sine, min gain</td>
+<td>200 mV/div, +1 div offset, ≈ 5 div tall</td>
+<td>200 mV/div, −1 div offset, ≈ 5 div tall</td>
+<td>200 µs/div (2 cycles)</td>
+<td>CH1 ↑ 0 V</td>
+<td>Vpp(1) ≈ 1.0 V, Vpp(2) ≈ 1.0 V, f(1) = 1.000 kHz</td>
+<td>Identical shape and height at the same V/div</td>
+</tr>
+<tr>
+<td>D3 sine, max gain</td>
+<td>200 mV/div, 0 offset, ≈ 5 div</td>
+<td><strong>1 V/div</strong>, 0 offset, ≈ 6 div</td>
+<td>200 µs/div</td>
+<td>CH1 ↑ 0 V</td>
+<td>Vpp(1) ≈ 1.0 V, Vpp(2) ≈ 5.5–6.6 V</td>
+<td>Same height on screen, but the V/div differs ×5. State this in the caption</td>
+</tr>
+<tr>
+<td>E2 bench, min gain</td>
+<td>50 mV/div, +2 div</td>
+<td>50 mV/div, −2 div</td>
+<td>2–5 ms/div, <strong>STOP</strong></td>
+<td>CH1, normal</td>
+<td>Vpp ≈ 0.1–0.2 V on both, RMS on both</td>
+<td>Identical waveform detail on both traces</td>
+</tr>
+<tr>
+<td>E3 bench, max gain</td>
+<td>50 mV/div, +2 div</td>
+<td>200 mV/div, −1.5 div</td>
+<td>2–5 ms/div, <strong>STOP</strong></td>
+<td>CH1, normal</td>
+<td>Vpp(2) ≈ 5.5–6 × Vpp(1); RMS ratio ≈ A<sub>Vmax</sub></td>
+<td>Same waveform, scaled; no flat tops</td>
+</tr>
+</tbody>
+</table>
+<p><strong>A submission-quality photo:</strong></p>
+<ul>
+<li>shot square-on, with no reflections or glare;</li>
+<li>shows the whole graticule plus the top and bottom readout bars;</li>
+<li>has legible text when the PDF is viewed at 100 %;</li>
+<li>has its caption beneath it, stating the configuration, the scales and the key readouts.</li>
+</ul>
+<h2>Appendix P2 — Calculations and significant figures used in this prototype (Deliverable 12)</h2>
+<table>
+<thead>
+<tr>
+<th>Quantity</th>
+<th>Formula</th>
+<th>Prototype numbers</th>
+<th>Result</th>
+<th>Rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A<sub>Vmin</sub> (design)</td>
+<td>1 + 0/R2</td>
+<td>—</td>
+<td>1.00</td>
+<td>3 s.f.</td>
+</tr>
+<tr>
+<td>A<sub>Vmax</sub> (design)</td>
+<td>1 + R1max/R2</td>
+<td>1 + 50/10</td>
+<td>6.00</td>
+<td>3 s.f.</td>
+</tr>
+<tr>
+<td>A<sub>Vmin</sub> (sine) <span class="tag proto">PROTOTYPE</span></td>
+<td>V<sub>out,pp</sub>/V<sub>in,pp</sub></td>
+<td>1.02/1.01</td>
+<td>1.01</td>
+<td>same s.f. as the readings</td>
+</tr>
+<tr>
+<td>A<sub>Vmax</sub> (sine) <span class="tag proto">PROTOTYPE</span></td>
+<td>"</td>
+<td>5.88/1.01</td>
+<td>5.82</td>
+<td>"</td>
+</tr>
+<tr>
+<td>A<sub>Vmin</sub> (bench) <span class="tag proto">PROTOTYPE</span></td>
+<td>"</td>
+<td>0.150/0.148</td>
+<td>1.01</td>
+<td>"</td>
+</tr>
+<tr>
+<td>A<sub>Vmax</sub> (bench) <span class="tag proto">PROTOTYPE</span></td>
+<td>"</td>
+<td>0.928/0.162</td>
+<td>5.73</td>
+<td>"</td>
+</tr>
+<tr>
+<td>% difference (meas. vs design)</td>
+<td>(meas − design)/design × 100</td>
+<td>(5.82 − 6.00)/6.00</td>
+<td>−3.0 %</td>
+<td>2 s.f.</td>
+</tr>
+<tr>
+<td>% difference (meas. vs resim.)</td>
+<td>(meas − resim)/resim × 100</td>
+<td>(5.82 − 5.795)/5.795</td>
+<td>+0.4 %</td>
+<td>"</td>
+</tr>
+<tr>
+<td>Gain in dB</td>
+<td>20 log₁₀ A<sub>V</sub></td>
+<td>20 log₁₀ 5.82</td>
+<td>15.3 dB</td>
+<td>3 s.f.</td>
+</tr>
+<tr>
+<td>Ratio uncertainty</td>
+<td>√(2 × 2² + 2 × 0.8²) %</td>
+<td>±2 % per channel, ±0.8 % read-out</td>
+<td>±3.0 %</td>
+<td>assumed: quote your scope's data sheet</td>
+</tr>
+</tbody>
+</table></div></body></html>

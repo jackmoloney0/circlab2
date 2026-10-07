@@ -1,0 +1,59 @@
+{
+  "sine_min": {
+    "vin_pp": 1.01,
+    "vout_pp": 1.02,
+    "gain": 1.01,
+    "gain_4sf": 1.00990099009901,
+    "vin_rms": 0.356,
+    "vout_rms": 0.358,
+    "gain_rms": 1.007,
+    "v1div": 0.2,
+    "v2div": 0.2,
+    "pos1": 1.0,
+    "pos2": -1.0,
+    "tdiv": 0.0002
+  },
+  "sine_max": {
+    "vin_pp": 1.01,
+    "vout_pp": 5.88,
+    "gain": 5.82,
+    "gain_4sf": 5.821782178217822,
+    "vin_rms": 0.356,
+    "vout_rms": 2.069,
+    "gain_rms": 5.817,
+    "v1div": 0.2,
+    "v2div": 1.0,
+    "pos1": 0.0,
+    "pos2": 0.0,
+    "tdiv": 0.0002
+  },
+  "bench_min": {
+    "vin_pp": 0.148,
+    "vout_pp": 0.15,
+    "gain": 1.01,
+    "gain_4sf": 1.0135135135135136,
+    "vin_rms": 0.0248,
+    "vout_rms": 0.025,
+    "gain_rms": 1.007,
+    "v1div": 0.05,
+    "v2div": 0.05,
+    "pos1": 2.0,
+    "pos2": -2.0,
+    "tdiv": 0.005
+  },
+  "bench_max": {
+    "vin_pp": 0.162,
+    "vout_pp": 0.928,
+    "gain": 5.73,
+    "gain_4sf": 5.728395061728395,
+    "vin_rms": 0.0272,
+    "vout_rms": 0.1579,
+    "gain_rms": 5.808,
+    "v1div": 0.05,
+    "v2div": 0.2,
+    "pos1": 2.2,
+    "pos2": -1.6,
+    "tdiv": 0.005
+  },
+  "_note": "Synthetic values for the PROTOTYPE report only. They were generated in tools/make_figures.py and are NOT measurements."
+}

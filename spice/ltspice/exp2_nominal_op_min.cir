@@ -1,0 +1,13 @@
+* EEEN20020 Exp. 2 - NOMINAL - MIN gain - DC operating point at vin = +0.5 V (positive peak of 1 V pk-pk)
+* Run, and LTspice opens a table of every node voltage and branch current (screenshot it for Sec. B)
+* Open in LTspice (File > Open, 'Netlists (*.cir)') and click Run.
+VCC vcc 0 5
+VEE 0 vee 5
+Vsig in 0 0.5
+R3 in 0 10k
+R1 out inv 1m
+R2 inv 0 10k
+XU1 in inv vcc vee out uA741
+.op
+.lib uA741.lib
+.end

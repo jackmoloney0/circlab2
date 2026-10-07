@@ -1,0 +1,211 @@
+<!doctype html><html><head><meta charset='utf-8'><title>EEEN20020 Exp 2 data sheet</title><style>
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { font-family: "Liberation Sans", Arial, "DejaVu Sans", sans-serif; font-size: 9.6pt;
+       line-height: 1.38; color: #111827; background: #ffffff; }
+h1 { font-size: 19pt; margin: 0 0 4pt 0; color: #7f1d1d; }
+h2 { font-size: 13.2pt; margin: 14pt 0 6pt 0; padding: 4pt 6pt; background: #f3f4f6;
+     border-left: 5px solid #111827; break-after: avoid; }
+h3 { font-size: 11pt; margin: 10pt 0 4pt 0; break-after: avoid; }
+p { margin: 4pt 0 5pt 0; }
+table { border-collapse: collapse; width: 100%; margin: 5pt 0 7pt 0; break-inside: avoid; font-size: 9pt; }
+th, td { border: 1px solid #374151; padding: 3pt 5pt; vertical-align: top; }
+th { background: #e5e7eb; }
+img { display: block; max-width: 100%; max-height: 118mm; margin: 4pt auto 2pt auto; break-inside: avoid; }
+em { color: #1f2937; }
+code { font-family: "DejaVu Sans Mono", monospace; font-size: 8.4pt; background: #f3f4f6; padding: 0 2px; }
+.tbox { border: 1.6px solid #111827; padding: 5pt 7pt; margin: 7pt 0; }
+.tbhead { font-weight: bold; font-size: 9pt; background: #111827; color: #ffffff;
+          margin: -5pt -7pt 6pt -7pt; padding: 3pt 7pt; }
+.guide { border: 1.4px dashed #2563eb; background: #eff6ff; padding: 4pt 8pt; margin: 7pt 0;
+         font-size: 8.6pt; break-inside: avoid; }
+.notice { border: 2.2px solid #b91c1c; background: #fef2f2; padding: 5pt 9pt; margin: 6pt 0 8pt 0; }
+.tag { display: inline-block; font-size: 7.4pt; font-weight: bold; padding: 0.5pt 4pt;
+       border-radius: 3px; border: 1px solid; line-height: 1.25; }
+.tag.proto { background: #fee2e2; color: #991b1b; border-color: #ef4444; }
+.tag.sim { background: #dbeafe; color: #1e3a8a; border-color: #3b82f6; }
+.tag.keep { background: #dcfce7; color: #14532d; border-color: #22c55e; }
+.pb { break-after: page; height: 0; }
+.wm { position: fixed; top: 40%; left: -12%; width: 124%; text-align: center; transform: rotate(-32deg);
+      font-size: 54pt; font-weight: bold; color: rgba(220, 38, 38, 0.075); z-index: 0;
+      pointer-events: none; white-space: nowrap; }
+.content { position: relative; z-index: 1; }
+
+.blank { display: inline-block; border-bottom: 1px solid #111827; height: 11pt; vertical-align: bottom; }
+body { font-size: 10pt; }
+td { height: 17pt; }
+h1 { color: #111827; font-size: 15pt; }
+h3 { margin-top: 9pt; }
+</style></head><body><h1>EEEN20020 Experiment 2 — Bench data sheet</h1>
+<p>Names: <span class='blank' style='width:45mm'></span> / <span class='blank' style='width:45mm'></span> &nbsp; Bench: <span class='blank' style='width:14mm'></span> &nbsp; Date: <span class='blank' style='width:9mm'></span> / <span class='blank' style='width:9mm'></span> / 2026</p>
+<p><strong>Design:</strong> R1max = 50 kΩ (trimmer code 503) · R2 = 10 kΩ · R3 = 10 kΩ · expected A<sub>Vmin</sub> = 1.00, A<sub>Vmax</sub> = 6.00 (<strong>must measure ≥ 5</strong>)</p>
+<h3>1. Components — measure OUT OF CIRCUIT before inserting (needed for Section G)</h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Nominal</th>
+<th>Measured (DMM)</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R1max — pot at max (wiper ↔ end used)</td>
+<td>50 kΩ</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>R1min — pot at min (wiper ↔ end used)</td>
+<td>≈ 0 Ω</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Pot end-to-end</td>
+<td>50 kΩ</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>R2</td>
+<td>10 kΩ</td>
+<td></td>
+<td>bands:</td>
+</tr>
+<tr>
+<td>R3</td>
+<td>10 kΩ</td>
+<td></td>
+<td>bands:</td>
+</tr>
+</tbody>
+</table>
+<h3>2. Supplies and set-up</h3>
+<table>
+<thead>
+<tr>
+<th>Pin 7 (V<sub>S+</sub>)</th>
+<th>Pin 4 (V<sub>S−</sub>)</th>
+<th>Pin 6 DC, no input</th>
+<th>PSU current (+ / −)</th>
+<th>Generator: 1 kHz · 1.000 Vpp · 0 V offset · <strong>HighZ</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>/</td>
+<td>☐ checked</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Table I colours:</strong> V<sub>S+</sub> <span class='blank' style='width:22mm'></span> V<sub>S−</sub> <span class='blank' style='width:22mm'></span> GND <span class='blank' style='width:22mm'></span> v<sub>in</sub> <span class='blank' style='width:22mm'></span> v<sub>out</sub> <span class='blank' style='width:22mm'></span></p>
+<h3>3. Measurements (gain = CH2 ÷ CH1, from the SAME screen)</h3>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>V/div CH1 / CH2</th>
+<th>t/div</th>
+<th>Vpp CH1 (in)</th>
+<th>Vpp CH2 (out)</th>
+<th>Gain</th>
+<th>RMS CH1</th>
+<th>RMS CH2</th>
+<th>RMS gain</th>
+<th>Photo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sine, min gain</td>
+<td>/</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>P3</td>
+</tr>
+<tr>
+<td>Sine, max gain</td>
+<td>/</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>P4</td>
+</tr>
+<tr>
+<td>Channel-swap check (min)</td>
+<td>/</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Bench, min gain (STOP)</td>
+<td>/</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>P5</td>
+</tr>
+<tr>
+<td>Bench, max gain (STOP)</td>
+<td>/</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>P6</td>
+</tr>
+</tbody>
+</table>
+<p>Headphones connected during bench captures?  ☐ Yes  ☐ No</p>
+<h3>4. Audio and Demonstrator</h3>
+<table>
+<thead>
+<tr>
+<th>Is the signal audible and free of distortion? (Demonstrator's answer)</th>
+<th>☐ Yes ☐ No</th>
+<th>Initials:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>What we heard at A<sub>V</sub> = 1</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>What we heard at A<sub>Vmax</sub></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3>5. Photo shot-list (two of each, check focus before dismantling)</h3>
+<p>☐ P1 breadboard top-down  ☐ P2 whole set-up (breadboard + PSU + generator + scope)  ☐ P3 sine min  ☐ P4 sine max  ☐ P5 bench min  ☐ P6 bench max  ☐ P7 DMM readings (optional)</p>
+<h3>6. Before leaving the bench</h3>
+<p>☐ A<sub>Vmin</sub> ≈ 1.00  ☐ <strong>A<sub>Vmax</sub> ≥ 5</strong>  ☐ peaks round (no clipping)  ☐ every number has a photo  ☐ R's measured  ☐ Demonstrator ticked  ☐ equipment returned  ☐ upload within 1 h — <strong>both</strong> students</p></body></html>

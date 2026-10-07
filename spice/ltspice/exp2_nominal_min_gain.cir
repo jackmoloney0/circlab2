@@ -1,0 +1,28 @@
+* EEEN20020 Exp. 2 - NOMINAL design - MINIMUM gain (potentiometer R1 at 0 ohm)
+* R1 = 1 mohm stands in for 0 ohm (avoids a zero-value resistor; gain error ~1e-7)
+* Vpk = 0.5 V -> 1 V pk-pk input (lab sheet Sec. B). Set Vpk=0.05 for the 100 mV pk-pk run (Sec. A)
+* Results of .meas: View > SPICE Error Log (Ctrl+L)
+* Open in LTspice (File > Open, 'Netlists (*.cir)') and click Run.
+VCC vcc 0 5
+VEE 0 vee 5
+Vsig in 0 SINE(0 {Vpk} 1k)
+R3 in 0 10k
+R1 out inv 1m
+R2 inv 0 10k
+XU1 in inv vcc vee out uA741
+.tran 0 6m 0 1u
+.lib uA741.lib
+.param Vpk=0.5
+.options plotwinsize=0
+.meas TRAN Vin_pp PP V(in) FROM 2m TO 6m
+.meas TRAN Vout_pp PP V(out) FROM 2m TO 6m
+.meas TRAN AV PARAM Vout_pp/Vin_pp
+.meas TRAN Vin_pk FIND V(in) AT 4.25m
+.meas TRAN Vinv_pk FIND V(inv) AT 4.25m
+.meas TRAN Vout_pk FIND V(out) AT 4.25m
+.meas TRAN IR1_pk FIND I(R1) AT 4.25m
+.meas TRAN IR2_pk FIND I(R2) AT 4.25m
+.meas TRAN IR3_pk FIND I(R3) AT 4.25m
+.meas TRAN IVCC_pk FIND I(VCC) AT 4.25m
+.meas TRAN IVEE_pk FIND I(VEE) AT 4.25m
+.end
